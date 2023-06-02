@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const clubSchema = require('./club')
+//const clubSchema = require('./club')
 
 const userSchema = new Schema({
   name: String,
@@ -10,7 +10,6 @@ const userSchema = new Schema({
   },
   email: String,
   avatar: String,
-  inventory: [clubSchema]
 }, {
   timestamps: true
 });

@@ -1,0 +1,87 @@
+<%- include('../partials/header') %>
+
+<table class="table table-striped table-secondary">Your Clubs
+    <thead>
+        <tr>
+            <th scope="col">Brand</th>
+            <th scope="col">Model</th>
+            <th scope="col">Condition (head, shaft, grip)</th>
+            <th scope="col">For Sale</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% clubs.forEach(function(club){ %>
+        <tr>
+            <td><%= club.brand %> </td>
+            <td><%= club.model %> </td>
+            <td><%= club.condition[0] +", "+ club.condition[1] +", "+ club.condition[2] %> </td>
+            <td><%= club.forSale ? 'Up for sale' : 'Not for sale' %> </td>
+            <td><form action="/clubs/<%= club._id %>?_method=DELETE" method="post">
+                <button class="button">X</button></td>
+            </form>
+        </tr>
+        <% }) %>
+    </tbody>
+</table> 
+    
+<ul class="list-group list-group-flush">
+    <button type="submit" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#newClubModal">Add new club</button>
+</ul>
+
+<div class="modal fade" id="newClubModal" tabindex="-1" aria-labelledby="newClubModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content d-flex">
+        <div class="modal-header">
+          <h5 class="modal-title text-center" id="newClubModalLabel">Add a new club!</h5>
+          
+        </div>
+        <div class="modal-body">
+            <form action="/clubs" method="post">
+                <div class="mb-3">
+                    <label for="brand" class="form-label">Brand</label>
+                    <input  class="form-control" id="brand" name="brand">
+                </div>
+                <div class="mb-3">
+                    <label for="model" class="form-label">Model</label>
+                    <input  class="form-control" id="model" name="model">
+                </div>
+                <select class="form-select" name="headCondition" aria-label="Default select example">
+                    <option selected>Head Condition</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                  </select>
+                <select class="form-select" name="shaftCondition" aria-label="Default select example">
+                    <option selected>Shaft Condition</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                  </select>
+                <select class="form-select" name="gripCondition" aria-label="Default select example">
+                    <option selected>Grip Condition</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                  </select>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" name="forSale" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">For Sale</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            
+            </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+<%- include('../partials/footer') %>

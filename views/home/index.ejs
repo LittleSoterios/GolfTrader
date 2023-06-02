@@ -1,0 +1,17 @@
+<%- include('../partials/header') %>
+
+
+
+<div class="d-flex flex-column mb-3">
+    <% clubs.forEach(function(club, idx){ %> 
+    <div class="p-2">
+        <h3><%= club.model %></h3> 
+        <h5><%= club.brand %></h5>
+        <small><%= users[idx] %></small>
+    </div>  
+    <% }) %>
+</div>
+
+
+
+<%- include('../partials/footer') %>

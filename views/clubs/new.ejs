@@ -1,0 +1,46 @@
+<%- include('../partials/header') %>
+
+<form action="/clubs" method="post">
+    <div class="mb-3">
+        <label for="brand" class="form-label">Brand</label>
+        <input type="email" class="form-control" id="brand" name="brand">
+    </div>
+    <div class="mb-3">
+        <label for="model" class="form-label">Model</label>
+        <input type="email" class="form-control" id="model" name="model">
+    </div>
+    <select class="form-select" name="headCondition" aria-label="Default select example">
+        <option selected>Head Condition</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+      </select>
+    <select class="form-select" name="shaftCondition" aria-label="Default select example">
+        <option selected>Shaft Condition</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+      </select>
+    <select class="form-select" name="gripCondition" aria-label="Default select example">
+        <option selected>Grip Condition</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+      </select>
+    <div class="mb-3 form-check">
+        <input type="checkbox" name="forSale" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">For Sale</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+
+
+
+<%- include('../partials/footer') %>

@@ -18,14 +18,14 @@ router.get('/oauth2callback', passport.authenticate(
   {
     successRedirect: '/',
     // change to what's best for your page "potentially to landing page v"
-    failureRedirect: '/'
+    failureRedirect: '/404'
   }
 ))
 
 router.get('/logout', function(req, res){
   req.logout(function(){
     // change path to landing page
-    res.redirect('/movies')
+    res.redirect('/')
   })
 })
 
