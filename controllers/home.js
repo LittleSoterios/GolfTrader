@@ -2,7 +2,8 @@ const Club = require('../models/club')
 const User = require('../models/user')
 
 module.exports = {
-    index
+    index,
+    show
 }
 
 async function index(req, res, next){
@@ -23,6 +24,17 @@ async function index(req, res, next){
     } catch (err) {
         console.log(err)
         next()
+        
+    }
+}
+
+async function show(req, res, next){
+    try {
+        const club = await Club.findById(req.params.id)
+        res.render('home/show', {
+            club
+        })
+    } catch (err) {
         
     }
 }

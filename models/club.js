@@ -6,7 +6,7 @@ const clubSchema = new Schema({
   model: String,
   condition: [Number],
   value: Number,
-  pictures: [String],
+  pictures: Buffer,
   forSale: Boolean,
   user: {type: Schema.Types.ObjectId, ref: 'User'}
 }, {

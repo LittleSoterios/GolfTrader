@@ -9,6 +9,8 @@ router.get('/', ensureLoggedIn, bagCtrl.index);
 //router.get('/new', ensureLoggedIn, bagCtrl.new )
 router.post('/', ensureLoggedIn, bagCtrl.create)
 
+router.get('/:id', ensureLoggedIn, bagCtrl.show)
+
 router.delete('/:id', ensureLoggedIn, bagCtrl.delete)
 
 module.exports = router;

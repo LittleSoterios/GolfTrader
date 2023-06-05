@@ -4,7 +4,7 @@ const passport = require('passport');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.redirect('/home')
 });
 
 router.get('/auth/google', passport.authenticate(
@@ -27,6 +27,10 @@ router.get('/logout', function(req, res){
     // change path to landing page
     res.redirect('/')
   })
+})
+
+router.post('/upload', function(req, res){
+  console.log(req.files, typeof(req.files))
 })
 
 

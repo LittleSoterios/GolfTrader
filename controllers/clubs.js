@@ -5,13 +5,14 @@ const User = require('../models/user')
 module.exports = {
     index,
     create,
-    delete: deleteClub
+    delete: deleteClub,
+    show
 }
 
 async function index(req, res, next){
     try {
         const clubs = await Club.find({user: req.user._id}).sort('brand')
-        console.log(clubs[0].condition[0], typeof(clubs[0].condition[0]))
+        //console.log(clubs[0].condition[0], typeof(clubs[0].condition[0]))
         res.render('clubs/index', {
             clubs
             
@@ -24,10 +25,9 @@ async function index(req, res, next){
 }
 
 async function create(req, res, next){
-    console.log(req.body.pictures, typeof(req.body.pictures))
     req.body.forSale = !!req.body.forSale ? true : false
-    console.log(req.body.forSale)
     req.body.user = req.user._id
+    req.body.pictures = req.files.pic.data
     req.body.condition = [req.body.headCondition, req.body.shaftCondition, req.body.gripCondition]
     try {
         await Club.create(req.body)
@@ -48,6 +48,23 @@ async function deleteClub(req, res, next){
     } catch (err) {
         console.log(err)
         next()
+    }
+}
+
+
+async function show(req, res, next){
+    console.log(req.params.id)
+    try {
+        console.log('gets here')
+        const club = await Club.findById(req.params.id)
+        res.render('clubs/show', {
+            club
+        })
+        
+    } catch (err) {
+        console.log(err)
+        next()
+        
     }
 }
 

@@ -1,0 +1,17 @@
+<%- include('../partials/header') %>
+
+<div class="container text-left">
+    <div class="row">
+      <div class="col">
+        <img class="img-thumbnail mt-0" width="250px" height="auto" src="data:image/png;base64,<%=club.pictures.toString('base64')%>" alt="club">
+      </div>
+      <div class="col">
+        <div class="display-1"><%= club.model %></div>
+        <div class="display-4 justify-self"><%= club.brand %></div>
+      </div>
+    </div>
+  </div>
+
+
+
+<%- include('../partials/footer') %>

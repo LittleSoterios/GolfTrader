@@ -7,6 +7,8 @@ const HomeCtrl = require('../controllers/home')
 
 router.get('/', HomeCtrl.index)
 
+router.get('/:id', HomeCtrl.show)
+
 
 
 module.exports = router;
