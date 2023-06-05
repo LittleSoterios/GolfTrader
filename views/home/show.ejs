@@ -12,6 +12,37 @@
     </div>
   </div>
 
+<% if(user) { %> 
+  <ul class="list-group list-group-flush">
+    <button type="submit" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#newClubModal">Make Offer!</button>
+</ul>
+
+<div class="modal fade" id="newClubModal" tabindex="-1" aria-labelledby="newClubModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content d-flex">
+        <div class="modal-header">
+          <h5 class="modal-title text-center" id="newClubModalLabel">Make offer!</h5>
+          
+        </div>
+        <div class="modal-body">
+            <form action="/home/<%=club._id%>/messages" method="post" encType="multipart/form-data">
+                <div class="mb-3">
+                    <label for="offer" class="form-label">Offer</label>
+                    <input  type="number" class="form-control" id="offer" name="offer" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <input  class="form-control" id="message" name="message" required>
+                
+                <button type="submit" class="btn btn-primary">Submit</button>
+            
+            </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+<%}%>
 
 
 <%- include('../partials/footer') %>

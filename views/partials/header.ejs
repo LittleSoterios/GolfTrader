@@ -12,26 +12,27 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="#">GOLFTRADER</a>
+        <a class="navbar-brand" href="/">GOLFTRADER</a>
       
         <div class="ms-2 collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
               <a class="nav-link" href="/">Home</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
+            
             <% if(!user){ %>
             <li class="nav-item">
               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                LogIn
+                Log In
               </button>
             </li>
             <% } else{ %>
             <li class="nav-item">
                 <a class="nav-link" href="/clubs">Your Clubs</a> 
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/messages">Messages</a>
+              </li>
             <li class="nav-item ps-2">
               <form action="/logout">
                 <button type="submit" class="btn btn-warning">Logout</button>
@@ -45,8 +46,8 @@
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content d-flex">
-            <div class="modal-header">
-              <h5 class="modal-title text-center" id="exampleModalLabel">LogIn with Google!</h5>
+            <div class="modal-header text-center">
+              <h5 class="modal-title " id="exampleModalLabel">Log In With Google!</h5>
               
             </div>
             <div class="modal-body">

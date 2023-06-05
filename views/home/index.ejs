@@ -2,13 +2,13 @@
 
 
 
-<div class="d-flex flex-column mb-3">
+<div class="d-flex flex-wrap">
     
     <% clubs.forEach(function(club, idx){ %> 
     <a class="link-offset-2 link-underline link-underline-opacity-0" href="/home/<%= club._id %>">
         <div class="p-2">
-            <h3><%= club.model %></h3> 
-            <h5><%= club.brand %></h5>
+            <h3 class="display-3"><%= club.model %></h3> 
+            <h5 class="display-5"><%= club.brand %></h5>
             <img class="img-thumbnail mt-0" width="250px" height="auto" src="data:image/png;base64,<%=club.pictures.toString('base64')%>" alt="club">
             <br><small><%= users[idx] %></small>
         </div>    

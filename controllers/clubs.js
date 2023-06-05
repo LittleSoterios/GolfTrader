@@ -54,9 +54,21 @@ async function deleteClub(req, res, next){
 
 async function show(req, res, next){
     console.log(req.params.id)
+    
     try {
-        console.log('gets here')
         const club = await Club.findById(req.params.id)
+        console.log(club.user.toString() == req.user._id.toString())
+        
+        if (req.user.id.toString() != club.user.toString()) {
+            if(club.forSale){
+                res.redirect(`/home/${club._id}`)
+                return 
+            } else{
+                res.redirect('/home')
+                return
+            }
+            
+        }
         res.render('clubs/show', {
             club
         })
