@@ -6,3 +6,29 @@ body {
 a {
   color: #00B7FF;
 }
+.scroll {
+  max-height: 80vmin;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+img {
+  float: left;
+  min-width:  30vmin;
+  min-height: 40vmin;
+  max-width: 500px;
+  max-height: 666px;
+  object-fit:cover;
+}
+
+.avatar {
+  border-radius: 50%;
+  float: left;
+  min-width:  50px;
+  min-height: auto;
+  max-width: 50px;
+  max-height: auto;
+  object-fit: fill;
+  
+}

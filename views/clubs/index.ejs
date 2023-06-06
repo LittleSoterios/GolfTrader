@@ -43,15 +43,27 @@
         </div>
         <div class="modal-body">
             <form action="/clubs" method="post" encType="multipart/form-data">
-                <div class="mb-3">
-                    <label for="brand" class="form-label">Brand</label>
-                    <input  class="form-control" id="brand" name="brand" required>
-                </div>
+              <label for="clubType" class="form-label">Club Type</label>
+              <select name="clubType"  class="form-select mb-3" id="clubType">
+                    <option value="Driver">Driver</option>
+                    <option value="Fairway Wood">Fairway Wood</option>
+                    <option value="Utility Iron/Hybrid">Utility Iron/Hybrid</option>
+                    <option value="Iron Set">Iron Set</option>
+                    <option value="Wedge">Wedge</option>
+                    <option value="Putter">Putter</option>
+              </select>
+              <label for="brand-select" class="form-label">Brand</label>
+                <select class="form-select mb-3" name="brand" id="brand-select">
+                  <%brands.forEach(function(brand){ %>
+                    <option value="<%=brand%>"><%=brand%></option>
+                  <%})%>
+                </select>
                 <div class="mb-3">
                     <label for="model" class="form-label">Model</label>
                     <input  class="form-control" id="model" name="model" required>
                 </div>
-                <select class="form-select" name="headCondition" aria-label="Default select example" required>
+                <div class="mb-3">
+                  <select class="form-select mb-3" name="headCondition" aria-label="Default select example">
                     <option selected>Head Condition</option>
                     <option value="5">5</option>
                     <option value="6">6</option>
@@ -59,7 +71,10 @@
                     <option value="8">8</option>
                     <option value="9">9</option>
                   </select>
-                <select class="form-select" name="shaftCondition" aria-label="Default select example" required>
+                </div>
+                
+                  <div class="mb-3">
+                    <select class="form-select mb-3" name="shaftCondition" aria-label="Default select example">
                     <option selected>Shaft Condition</option>
                     <option value="5">5</option>
                     <option value="6">6</option>
@@ -67,7 +82,10 @@
                     <option value="8">8</option>
                     <option value="9">9</option>
                   </select>
-                <select class="form-select" name="gripCondition" aria-label="Default select example" required>
+                  </div>
+                
+                <div class="mb-3">
+                  <select class="form-select mb-3" name="gripCondition" aria-label="Default select example">
                     <option selected>Grip Condition</option>
                     <option value="5">5</option>
                     <option value="6">6</option>
@@ -75,15 +93,24 @@
                     <option value="8">8</option>
                     <option value="9">9</option>
                   </select>
+                </div>
                 <div class="mb-3 form-check">
                     <input type="checkbox" name="forSale" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1">For Sale</label>
                 </div>
                 <div class="mb-3">
-                    <label for="formFileMultiple" class="form-label">Multiple files input example</label>
-                    <input name="pic" class="form-control" type="file" id="formFileMultiple" multiple>
-                  </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                    <label for="formFileMultiple" class="form-label">Upload Picture</label>
+                    <input name="pic" class="form-control" type="file" id="formFileMultiple" accept=".jpg">
+                </div>
+                <div class="mb-3">
+                  <label for="askingPrice" class="form-label">Asking Price (£)</label>
+                  <input type="number" class="form-control" id="askingPrice" name="value" required>
+              </div>
+              <div class="form-floating mb-3">
+                <textarea name="notes" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                <label for="floatingTextarea2">Comments</label>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
             
             </form>
         </div>

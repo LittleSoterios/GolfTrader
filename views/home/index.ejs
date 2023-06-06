@@ -6,12 +6,21 @@
     
     <% clubs.forEach(function(club, idx){ %> 
     <a class="link-offset-2 link-underline link-underline-opacity-0" href="/home/<%= club._id %>">
-        <div class="p-2">
-            <h3 class="display-3"><%= club.model %></h3> 
-            <h5 class="display-5"><%= club.brand %></h5>
-            <img class="img-thumbnail mt-0" width="250px" height="auto" src="data:image/png;base64,<%=club.pictures.toString('base64')%>" alt="club">
-            <br><small><%= users[idx] %></small>
-        </div>    
+        <div class="card text-black m-3">
+          
+            <img src="data:image/jpg;base64,<%=club.pictures.toString('base64')%>"
+              class="card-img-top" alt="Club" />
+            <div class="card-body">
+              <div class="text-center">
+                <h3 class="card-title"><%= club.model %></h5>
+                <p class="text-muted mb-2"><%= club.brand %></p>
+                <p class="text-muted mb-4"><%= club.clubType %></p>
+              </div>
+              <div class="d-flex justify-content-center total font-weight-bold mt-4 h5">
+                <span>£<%=club.value%></span>
+              </div>
+            </div>
+          </div>
     </a>
      
     <% }) %>

@@ -6,6 +6,8 @@ const MsgCtrl = require('../controllers/messages')
 
 
 router.get('/', ensureLoggedIn, MsgCtrl.index)
+router.get('/:id', ensureLoggedIn, MsgCtrl.show)
+router.put('/:id', ensureLoggedIn, MsgCtrl.update)
 
 
 

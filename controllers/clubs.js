@@ -1,12 +1,14 @@
 const Club = require('../models/club')
 const User = require('../models/user')
+const Brands = require('../models/brands')
 
 
 module.exports = {
     index,
     create,
     delete: deleteClub,
-    show
+    show,
+    update
 }
 
 async function index(req, res, next){
@@ -14,7 +16,8 @@ async function index(req, res, next){
         const clubs = await Club.find({user: req.user._id}).sort('brand')
         //console.log(clubs[0].condition[0], typeof(clubs[0].condition[0]))
         res.render('clubs/index', {
-            clubs
+            clubs,
+            brands: Brands
             
         })    
     } catch (err) {
@@ -53,11 +56,10 @@ async function deleteClub(req, res, next){
 
 
 async function show(req, res, next){
-    console.log(req.params.id)
-    
+   
     try {
         const club = await Club.findById(req.params.id)
-        console.log(club.user.toString() == req.user._id.toString())
+        
         
         if (req.user.id.toString() != club.user.toString()) {
             if(club.forSale){
@@ -70,7 +72,8 @@ async function show(req, res, next){
             
         }
         res.render('clubs/show', {
-            club
+            club, 
+            brands: Brands
         })
         
     } catch (err) {
@@ -78,6 +81,23 @@ async function show(req, res, next){
         next()
         
     }
+}
+
+async function update(req, res, next){
+    req.body.forSale = !!req.body.forSale ? true : false
+    req.body.condition = [req.body.headCondition, req.body.shaftCondition, req.body.gripCondition]
+    try {
+        const club = await Club.findById(req.params.id)
+        Object.assign(club, req.body)
+        await club.save()
+        res.redirect(`/clubs/${req.params.id}`)
+        
+    } catch (err) {
+        console.log(err)
+        next()
+        
+    }
+
 }
 
 // function newClub(req, res, next){

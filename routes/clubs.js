@@ -13,4 +13,6 @@ router.get('/:id', ensureLoggedIn, bagCtrl.show)
 
 router.delete('/:id', ensureLoggedIn, bagCtrl.delete)
 
+router.put('/:id', ensureLoggedIn, bagCtrl.update)
+
 module.exports = router;

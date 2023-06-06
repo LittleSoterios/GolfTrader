@@ -1,9 +1,127 @@
 <%- include('../partials/header') %>
 
+<section style="background-color: #ffffff;">
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6 col-xl-4">
+          <div class="card text-black">
+            
+            <img src="data:image/jpg;base64,<%=club.pictures.toString('base64')%>"
+              class="card-img-top" alt="Club" />
+            <div class="card-body">
+              <div class="text-center">
+                <h5 class="card-title"><%= club.model %></h5>
+                <p class="text-muted mb-2"><%= club.brand %></p>
+                <p class="text-muted mb-4"><%= club.clubType %></p>
+              </div>
+              <div>
+                <div class="d-flex justify-content-between">
+                  <span>Head Condition</span><span><%=club.condition[0]%>/10</span>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <span>Shaft Condition</span><span><%=club.condition[1]%>/10</span>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <span>Grip Condition</span><span><%=club.condition[2]%>/10</span>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between total font-weight-bold mt-4">
+                <span>Asking Price</span><span>£<%=club.value%></span>
+              </div>
+            </div>
+              <ul class="list-group list-group-flush">
+                <button type="submit" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#newClubModal">Edit Club</button>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
 
 
-<h1><%= club.model %></h1>
-<h2><%= club.brand %></h2>
+
+<div class="modal fade" id="newClubModal" tabindex="-1" aria-labelledby="newClubModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content d-flex">
+        <div class="modal-header">
+          <h5 class="modal-title text-center" id="newClubModalLabel">Add a new club!</h5>
+          
+        </div>
+        <div class="modal-body">
+            <form action="/clubs/<%=club._id%>?_method=PUT" method="post" encType="multipart/form-data">
+              <label for="clubType" class="form-label">Club Type</label>
+              <select name="clubType"  class="form-select mb-3" id="clubType">
+                    <option value="Driver" <%= (club.clubType == 'Driver') ? 'selected' : '' %>>Driver</option>
+                    <option value="Fairway Wood" <%= (club.clubType == 'Fairway Wood') ? 'selected' : '' %>>Fairway Wood</option>
+                    <option value="Utility Iron/Hybrid"  <%= (club.clubType == 'Utility Iron/Hybrid') ? 'selected' : '' %>>Utility Iron/Hybrid</option>
+                    <option value="Iron Set" <%= (club.clubType == 'Iron Set') ? 'selected' : '' %>>Iron Set</option>
+                    <option value="Wedge" <%= (club.clubType == 'Wedge') ? 'selected' : '' %>>Wedge</option>
+                    <option value="Putter" <%= (club.clubType == 'Putter') ? 'selected' : '' %>>Putter</option>
+              </select>
+              <label for="brand-select" class="form-label">Brand</label>
+                <select class="form-select mb-3" name="brand" id="brand-select">
+                  <%brands.forEach(function(brand){ %>
+                    <option value="<%=brand%>" <%= (club.brand == brand) ? 'selected' : '' %>><%=brand%></option>
+                  <%})%>
+                </select>
+                <div class="mb-3">
+                    <label for="model" class="form-label">Model</label>
+                    <input  class="form-control" id="model" name="model" required value="<%=club.model%>">
+                </div>
+                <div class="mb-3">
+                  <select class="form-select mb-3" name="headCondition" aria-label="Default select example">
+                    <option selected>Head Condition</option>
+                    <option value="5" <%= (club.condition[0] == '5') ? 'selected' : '' %>>5</option>
+                    <option value="6" <%= (club.condition[0] == '6') ? 'selected' : '' %>>6</option>
+                    <option value="7" <%= (club.condition[0] == '7') ? 'selected' : '' %>>7</option>
+                    <option value="8" <%= (club.condition[0] == '8') ? 'selected' : '' %>>8</option>
+                    <option value="9" <%= (club.condition[0] == '9') ? 'selected' : '' %>>9</option>
+                  </select>
+                </div>
+                
+                  <div class="mb-3">
+                    <select class="form-select mb-3" name="shaftCondition" aria-label="Default select example">
+                    <option selected>Shaft Condition</option>
+                    <option value="5" <%= (club.condition[1] == '5') ? 'selected' : '' %>>5</option>
+                    <option value="6" <%= (club.condition[1] == '6') ? 'selected' : '' %>>6</option>
+                    <option value="7" <%= (club.condition[1] == '7') ? 'selected' : '' %>>7</option>
+                    <option value="8" <%= (club.condition[1] == '8') ? 'selected' : '' %>>8</option>
+                    <option value="9" <%= (club.condition[1] == '9') ? 'selected' : '' %>>9</option>
+                  </select>
+                  </div>
+                
+                <div class="mb-3">
+                  <select class="form-select mb-3" name="gripCondition" aria-label="Default select example">
+                    <option selected>Grip Condition</option>
+                    <option value="5" <%= (club.condition[2] == '5') ? 'selected' : '' %>>5</option>
+                    <option value="6" <%= (club.condition[2] == '6') ? 'selected' : '' %>>6</option>
+                    <option value="7" <%= (club.condition[2] == '7') ? 'selected' : '' %>>7</option>
+                    <option value="8" <%= (club.condition[2] == '8') ? 'selected' : '' %>>8</option>
+                    <option value="9" <%= (club.condition[2] == '9') ? 'selected' : '' %>>9</option>
+                  </select>
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" name="forSale" class="form-check-input" id="exampleCheck1" <%= club.forSale ? 'checked' : '' %>>
+                    <label class="form-check-label" for="exampleCheck1">For Sale</label>
+                </div>
+                <div class="mb-3">
+                  <label for="askingPrice" class="form-label">Asking Price (£)</label>
+                  <input type="number" class="form-control" id="askingPrice" name="value" required value="<%=club.value%>">
+              </div>
+              <div class="form-floating mb-3">
+                <textarea name="notes" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"><%=club.notes%></textarea>
+                <label for="floatingTextarea2">Comments</label>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            
+            </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
 
 
 

@@ -1,0 +1,68 @@
+<%- include('../partials/header') %>
+
+
+<section style="background-color: #eee;">
+    <div class="container py-5">
+  
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-8 col-lg-6 col-xl-4">
+  
+          <div class="card" id="chat1" style="border-radius: 15px;">
+            <div
+              class="card-header d-flex justify-content-between align-items-center p-3 bg-info text-white border-bottom-0"
+              style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
+              <i class="fas fa-angle-left"></i>
+              <p class="mb-0 fw-bold"><%= recipient.name%></p>
+              <i class="fas fa-times"></i>
+            </div>
+            <div class="card-body scroll">
+
+                <div class="form-outline">
+                    <form action="/messages/<%= message._id%>?_method=PUT" method="post">
+                    <textarea required name="msg" class="form-control" id="textAreaExample" rows="4"></textarea>
+                    <label class="form-label" for="textAreaExample"></label>
+                    <button type="submit" class="btn btn-primary position-absolute bottom-0 end-0 ">Send</button></td>
+                    </form>
+                  </div>
+
+            <% message.messages.forEach(function(msg){ %>
+                <% console.log(msg, msg.user, user) %>
+                <% if (user._id.toString() != msg.user.toString()) { %>
+                    <div class="d-flex flex-row justify-content-start mb-4">
+                        <img src="<%=recipient.avatar%>" alt="avatar 1" class="avatar">
+                        <div class="p-3 ms-3" style="border-radius: 15px; background-color: rgba(57, 192, 237,.2);">
+                            <p class="small mb-0"><%=msg.message%></p>
+                        </div>
+                    </div> 
+                <% } else{ %>
+                    <div class="d-flex flex-row justify-content-end mb-4">
+                        <div class="p-3 me-3 border" style="border-radius: 15px; background-color: #fbfbfb;">
+                            <p class="small mb-0"><%=msg.message%></p>
+                        </div>
+                        <img src="<%=user.avatar%>" alt="avatar 1" style="width: 45px; height: 100%;" class="avatar">
+                    </div>
+
+                <% } %>
+                
+
+            <% }) %>
+  
+             
+  
+            </div>
+          </div>
+  
+        </div>
+      </div>
+  
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+<%- include('../partials/footer') %>
