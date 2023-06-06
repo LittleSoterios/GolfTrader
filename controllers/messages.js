@@ -63,6 +63,10 @@ async function show(req, res, next){
         } else{
             recipient = await User.findById(message.buyer)
         }
+        if ((req.user._id.toString() != message.buyer.toString() && req.user._id.toString() != message.seller.toString())) {
+            res.redirect('/home')
+            return
+        }
         
         res. render('messages/show', {
             message,
@@ -87,7 +91,7 @@ async function update(req, res, next){
         const message = await Message.findById(req.params.id)
         console.log(req.user._id.toString() , message.buyer.toString())
         console.log(req.user._id.toString() == message.seller.toString())
-        if (!(req.user._id.toString() != message.buyer.toString() || req.user._id.toString() != message.seller.toString())) {
+        if ((req.user._id.toString() != message.buyer.toString() && req.user._id.toString() != message.seller.toString())) {
             res.redirect('/home')
             return
         }
