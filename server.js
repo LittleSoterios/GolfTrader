@@ -7,6 +7,7 @@ var methodOverride = require('method-override')
 var passport = require('passport')
 var session = require('express-session')
 const fileUpload = require('express-fileupload')
+const mongoStore = require('connect-mongo')
 
 require('dotenv').config()
 //connect to the database after the config vars are processed
@@ -35,6 +36,7 @@ app.use(methodOverride('_method'))
 
 app.use(session({
   secret: process.env.SECRET,
+  store: mongoStore.create({mongoUrl: process.env.SESSION_DATABASE_URL}),
   resave: false,
   saveUninitialized: true
 }))

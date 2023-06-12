@@ -1,6 +1,7 @@
 const Club = require('../models/club')
 const User = require('../models/user')
 const Brands = require('../models/brands')
+const Message = require('../models/message')
 
 
 module.exports = {
@@ -45,6 +46,7 @@ async function create(req, res, next){
 
 async function deleteClub(req, res, next){
     try {
+        await Message.deleteMany({club: req.params.id})
         await Club.deleteOne({'_id': req.params.id, 'user': req.user._id})
         res.redirect('/clubs')
 

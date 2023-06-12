@@ -19,7 +19,7 @@ img {
   min-height: 40vmin;
   max-width: 500px;
   max-height: 666px;
-  object-fit:cover;
+  object-fit:contain;
 }
 
 .avatar {

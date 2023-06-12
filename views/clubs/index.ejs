@@ -14,7 +14,7 @@
     <tbody>
         <% clubs.forEach(function(club){ %>
         <tr><td>
-            <a href="clubs/<%= club._id %>">Details</a>
+            <a class="link-offset-2 link-underline link-underline-opacity-0" href="clubs/<%= club._id %>">Details</a>
         </td>
            <td><%= club.brand %> </td>
             <td><%= club.model %> </td>
@@ -23,7 +23,7 @@
         
             
             <td><form action="/clubs/<%= club._id %>?_method=DELETE" method="post">
-                <button class="button">X</button></td>
+                <button class="button">🗑️</button></td>
             </form>
         </tr>
         <% }) %>

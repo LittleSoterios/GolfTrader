@@ -24,7 +24,7 @@
                 <tr>
                    <td><%= buyers[idx].email %> </td>
                     <td><%= clubSell[idx].model %> </td>
-                    <td><a href="/messages/<%=message._id%>"><%= message.messages[message.messages.length - 1].message.slice(0, 20) + "..." %></a> </td>
+                    <td><a class="link-offset-2 link-underline link-underline-opacity-0" href="/messages/<%=message._id%>"><%= message.messages[message.messages.length - 1].message.slice(0, 20) + "..." %></a> </td>
                 </tr>
                 <% }) %>
             </tbody>
@@ -45,7 +45,7 @@
             <tr>
                <td><%= sellers[idx].email %> </td>
                 <td><%= clubBuy[idx].model %> </td>
-                <td><a href="/messages/<%=message._id%>"><%= message.messages[message.messages.length - 1].message.slice(0, 20) + "..." %></a> </td>
+                <td><a class="link-offset-2 link-underline link-underline-opacity-0" href="/messages/<%=message._id%>"><%= message.messages[message.messages.length - 1].message.slice(0, 20) + "..." %></a> </td>
             </tr>
             <% }) %>
         </tbody>
