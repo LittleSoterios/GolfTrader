@@ -26,7 +26,6 @@
                   </div>
 
             <% message.messages.forEach(function(msg){ %>
-                <% console.log(msg, msg.user, user) %>
                 <% if (user._id.toString() != msg.user.toString()) { %>
                     <div class="d-flex flex-row justify-content-start mb-4">
                         <img src="<%=recipient.avatar%>" alt="avatar 1" class="avatar">
