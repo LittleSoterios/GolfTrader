@@ -93,10 +93,6 @@ Bootstrap was used for the styling as a quick way to
 CRUD functionality allows users to add clubs to their inventory and list them. They can also edit and delete clubs from their inventory. On the show page for each club if they are the owner of that clubs they can edit the details of the club, or if they are not the owner of the club they can make an offer for the club. Making an offer opens up a text area where they can write a message to the owner and that starts the messaging thread.
 
 
-## Challenges
-
-
-
 
 ## Future improvements
 Currently there is no way for a user to search for a specific club or use filters to search through types of clubs. This functionality is important for any e-marketplace and is in the development pipeline. 
