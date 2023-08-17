@@ -107,6 +107,12 @@ For styling, Bootstrap was employed. This choice was made to quickly ensure a re
 
 The app offers CRUD functionality, allowing users to add golf clubs to their inventory and list them. They can edit or delete clubs from their inventory as needed. On the individual display page for each club, if a user is the owner of that club, they have the capability to edit its details. Conversely, if they are not the club's owner, they can propose an offer for it. Proposing an offer reveals a text area where users can draft a message to the club's owner, thereby initiating a messaging thread.
 
+##  Overview of MVP
+Upon launching the app, users can log in using their Google account. Once authenticated, they're directed to the homepage, which showcases a listing of golf clubs available for sale from other users.
+
+Users have their personal "Inventory" section where they can add details about their golf clubs, including images. Within this inventory, they can designate specific clubs to be put up for sale. Clubs marked for sale become visible on the homepage for other users to see.
+
+When a user finds a club they're interested in on the homepage, they can click on it to view its detailed specifications. From this details page, they have the option to make an offer on the club. Initiating an offer activates a messaging thread between the prospective buyer and the club's seller, facilitating discussions around the purchase details.
 
 
 ## Wins
