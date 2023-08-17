@@ -17,12 +17,13 @@ Feature Trello board can be found here: https://trello.com/b/hWmUzYoA/planning-p
 This project was completed over the course of one week, solely by myself.
 
 
-## Breif
+## Brief
 The brief for this project was to create a fullstack application using MongoDB, Express.js and Node.js implementing all CRUD operations and implementing user authorisation using OAuth2.
 
 
 ## Planning
-ERDs and Wireframes can be found in the planning directory on the repo. The inspiration for the frontend was taken from standard responsive e-commerce websites like eBay and Amazon.
+ERDs and Wireframes can be found in the planning directory on the repo. 
+The inspiration for the frontend was taken from standard responsive e-commerce websites like eBay and Amazon.
 
 # Build Process
 The build process was split up into individual steps. These steps were:
@@ -33,10 +34,15 @@ The build process was split up into individual steps. These steps were:
 5. CSS, HTML, Express View Engines
 6. CRUD Operations
    
+### Database Hosting
 The database was set up and hosted using MongoDB Atlas.
 
-The user model can be seen below: 
-`const userSchema = new Schema({
+### User Model
+
+The user model is detailed below:
+
+```javascript
+const userSchema = new Schema({
   name: String,
   googleId: {
     type: String,
@@ -46,14 +52,18 @@ The user model can be seen below:
   avatar: String,
 }, {
   timestamps: true
-}); 
-`
-It is populated using OAuth2 and the google strategy.
+});
+```
+This model is populated using OAuth2 with the Google strategy.
 
-Page routing for GET request was simple set up and using the user object in the request I could conditionally render links on the home page based on whether the user was logged in, or redirect them to the home page if the manually tried to naviagte to a page only authenticated users should have access to.
+### Page Routing
+For the GET requests, the routing setup was straightforward. Leveraging the user object in the request, I could conditionally render links on the home page. This means if the user was logged in, certain links would be displayed. Additionally, if users manually attempted to navigate to restricted pages, they'd be redirected to the home page.
 
-The only three more models were created. The first that was implemented is the club model:
-`const clubSchema = new Schema({
+### Additional Models
+Club Model
+The first of the additional models is the club model:
+```javascript
+  const clubSchema = new Schema({
   clubType: String,
   brand: String,
   model: String,
@@ -65,18 +75,22 @@ The only three more models were created. The first that was implemented is the c
   user: {type: Schema.Types.ObjectId, ref: 'User'}
 }, {
   timestamps: true
-});`
+});
+```
 
-This models has a many-to-one relationship with the user and holds all of the information about the club, including a picture which is stored in a Buffer.
+This model exhibits a many-to-one relationship with the user. It retains all pertinent information about the club, inclusive of an image that's stored within a Buffer.
 
-The last model is the messages model: 
-`const message = new Schema({
+### Messages Model
+The final model is dedicated to messaging:
+```javascript
+const message = new Schema({
     user: {type: Schema.Types.ObjectId, ref: 'User', required: true},
     message: String
   }, {
     timestamps: true
-  })`
-`const msgSchema = new Schema({
+  })
+
+const msgSchema = new Schema({
     club: {type: Schema.Types.ObjectId, ref: 'Club'},
     seller: {type: Schema.Types.ObjectId, ref: 'User'},
     buyer: {type: Schema.Types.ObjectId, ref: 'User'},
@@ -84,18 +98,28 @@ The last model is the messages model:
     offer: Number
   }, {
     timestamps: true
-  });`
+  });
+```
 
-This is split into two models with the message being a sub-document in the msgSchema. The msgSchema holds information about the offer and relationship between the two messaging parties (what club is it regarding, who is the buyer and who is the seller) and the message subdocument holds individual messages and tracks who sent that message and when. 
+This app is structured with two models, where the message acts as a sub-document within the msgSchema. The msgSchema retains information about the offer as well as the relationship between the two messaging participants (details like which club is in question, who the buyer is, and who the seller is). Meanwhile, the message sub-document encompasses individual messages, tracking both the sender and the timestamp of each message.
 
-Bootstrap was used for the styling as a quick way to 
+For styling, Bootstrap was employed. This choice was made to quickly ensure a responsive design that's also aesthetically pleasing.
 
-CRUD functionality allows users to add clubs to their inventory and list them. They can also edit and delete clubs from their inventory. On the show page for each club if they are the owner of that clubs they can edit the details of the club, or if they are not the owner of the club they can make an offer for the club. Making an offer opens up a text area where they can write a message to the owner and that starts the messaging thread.
+The app offers CRUD functionality, allowing users to add golf clubs to their inventory and list them. They can edit or delete clubs from their inventory as needed. On the individual display page for each club, if a user is the owner of that club, they have the capability to edit its details. Conversely, if they are not the club's owner, they can propose an offer for it. Proposing an offer reveals a text area where users can draft a message to the club's owner, thereby initiating a messaging thread.
 
 
+
+## Wins
+One of the standout achievements in developing this app was the successful implementation of the messaging service. Working with Express and Node has its constraints, especially when not complemented by a responsive framework like React or Vue. Despite these limitations, I managed to devise a robust messaging system. This system adeptly tracks the roles of users - identifying who is the buyer and who is the seller. What's more, it consolidates all interactions between the two, storing their entire conversation within a single instance. This not only enhances the user experience but also streamlines the communication process within the app.
+
+## Challenges
+Developing a comprehensive application within the span of a week came with its unique set of challenges. With such tight time constraints, every moment spent troubleshooting directly impacted the app's features, sometimes necessitating the tough decision to forgo certain functionalities.
+
+One particular time-consuming challenge I encountered was making design choices. Navigating the balance between aesthetics, user experience, and practicality within a limited timeframe tested my abilities and required me to prioritize and make swift decisions.
+
+Despite these challenges, the process was a valuable learning experience, reminding me of the importance of efficient problem-solving, swift decision-making, and the need to sometimes compromise for the broader project goal.
 
 ## Future improvements
 Currently there is no way for a user to search for a specific club or use filters to search through types of clubs. This functionality is important for any e-marketplace and is in the development pipeline. 
 
 As of now you can only add one image per club, I would like to increase this number and also implement some kind of image compression to save space in the database and improve load times.
-
