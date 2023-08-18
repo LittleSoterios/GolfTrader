@@ -22,12 +22,17 @@ The brief for this project was to create a fullstack application using MongoDB, 
 
 
 ## Planning
-ERDs and Wireframes can be found in the planning directory on the repo. The inspiration for the frontend was taken from standard responsive e-commerce websites like eBay and Amazon.
+ERDs below:
+[![ERD](https://imgur.com/PQLbuwT)](https://littlesoterios.imgur.com/)
+
+Wireframes were completed however have since been lost.
+
+The inspiration for the frontend was taken from standard responsive e-commerce websites like eBay and Amazon.
 
 # Build Process
 The build process was split up into individual steps. These steps were:
 1. Database set up
-2. User model creation and authenitication
+2. User model creation and authentication
 3. Page routing
 4. Model creation
 5. CSS, HTML, Express View Engines
@@ -50,7 +55,7 @@ The user model can be seen below:
 `
 It is populated using OAuth2 and the google strategy.
 
-Page routing for GET request was simple set up and using the user object in the request I could conditionally render links on the home page based on whether the user was logged in, or redirect them to the home page if the manually tried to naviagte to a page only authenticated users should have access to.
+Page routing for GET request was simple set up and using the user object in the request I could conditionally render links on the home page based on whether the user was logged in, or redirect them to the home page if the manually tried to navigate to a page only authenticated users should have access to.
 
 The only three more models were created. The first that was implemented is the club model:
 `const clubSchema = new Schema({
