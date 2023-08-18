@@ -23,7 +23,7 @@ The brief for this project was to create a fullstack application using MongoDB, 
 
 ## Planning
 ERDs below:
-[![ERD](https://imgur.com/PQLbuwT)](https://littlesoterios.imgur.com/)
+[![ERD]([Imgur](https://i.imgur.com/PQLbuwT.png))](https://littlesoterios.imgur.com/)
 
 Wireframes were completed however have since been lost.
 
